@@ -1,0 +1,68 @@
+<div class="container">
+<form  [formGroup]="modifyActionForm" (ngSubmit)="addElement()">
+<div class="row">
+    <div class="form-group col-auto col-md-6">
+        <label for="styleCode" class="col-form-label">Style No :</label>
+        <input formControlName="styleCode" type="text" class="form-control">
+    </div>
+    <div class="form-group col-md-6 ">
+        <label for="status">Style Status :</label>
+        <input formControlName="status"  name="status" id="status"type="text" class="form-control">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="styleType">Style Type :</label>
+        <input formControlName="styleType"  id="styleType" type="text" class="form-control">
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-6">
+        <label for="styleName">Style Name :</label>
+        <input formControlName="styleName" id="styleName" type="text" class="form-control">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="styleQuantity">Qty :</label>
+        <input formControlName="styleQuantity" id="styleQuantity" type="text" class="form-control">
+    </div>
+</div>
+</form>
+<div class="btn-group text-center" role="group" aria-label="Basic example">
+    <button class="form-group btn btn-primary mb-3" (click)="addGroup()">Add</button>
+<button class="form-group btn btn-primary mb-3" (click)="onSubmit()">Submit</button>
+  </div>
+</div>
+<div class="container">
+    <form [formGroup]="myForm">
+   
+      <br>
+      <table class="table">
+        <thead>
+          <tr >
+            <th scope="col">#</th>
+            <th scope="col">Category</th>
+            <th scope="col">ItemCode</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody formArrayName="style" *ngFor="let style of myForm.controls.style?.value; let i = index; trackBy:trackByFn">
+            <tr [formGroupName]="i">
+                <th scope="row">{{i}}</th>
+            <td>
+                <select class="form-control" id="cars" name="cars" formControlName="itemCode">
+                    <option *ngFor="let category of categoryArray; let i = index;" value={{category.id}}>{{category.categoryName}}</option>
+                  </select>
+                </td>
+            <td ><select class="form-control" id="cars" name="cars" formControlName="itemCategory">
+              <option *ngFor="let category of categoryArray; let i = index;" value={{category.id}}>{{category.categoryName}}</option>
+
+              </select></td>
+            <td>
+                <button (click)="removeGroup(i)">Remove</button></td>
+              </tr>
+        </tbody>
+      </table>
+      
+    </form>
+
+    
+    
+    </div>

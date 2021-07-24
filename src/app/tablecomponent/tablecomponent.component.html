@@ -1,0 +1,21 @@
+<div class="container">
+<form [formGroup]="myForm">
+
+	<h3>add and remove groups with validatioon to form dynamically</h3>
+
+  <button (click)="addGroup()">Add</button>
+  <br>
+
+  <div formArrayName="times" *ngFor="let time of myForm.controls.times?.value; let i = index; trackBy:trackByFn">
+    <div [formGroupName]="i">
+      <input placeholder="from" formControlName="from">
+      <input placeholder="to" formControlName="to">
+    </div>
+    <span (click)="removeGroup(i)">Remove this group</span>
+  </div>
+
+  <br>
+  <button (click)="onSubmit()">Submit</button>
+</form>
+
+</div>
